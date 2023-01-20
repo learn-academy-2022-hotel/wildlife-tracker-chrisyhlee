@@ -4,8 +4,8 @@ class FoodsController < ApplicationController
         render json: foods
     end
     def show
-        food = Food.find(params[:id])
-        render json: food
+        food = Food.find_by(id: params[:id])
+        render json: food.timings
     end
     def create
         food = Food.create(food_params)
