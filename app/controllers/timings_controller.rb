@@ -1,6 +1,6 @@
 class TimingsController < ApplicationController
     def index
-        timings = Timing.all
+        timings = Timing.where(date: params[:start_date]..params[:end_date])
         render json: timings
     end
     def show
@@ -26,6 +26,6 @@ class TimingsController < ApplicationController
 
     private
     def timing_params
-        params.require(:timing).permit(:meal, :date, :food_id)
+        params.require(:timing).permit(:meal, :date, :food_id, :start_date, :end_date)
     end
 end
